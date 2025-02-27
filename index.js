@@ -30,6 +30,7 @@ app.use(express.json())
 const corsOptions = {
 	origin: ['http://localhost:3000','http://ec2-3-129-204-74.us-east-2.compute.amazonaws.com/b4','http://zuitt-bootcamp-prod-520-8346-acuna.s3-website.us-east-1.amazonaws.com', 'http://zuitt-bootcamp-prod-520-8494-fernandez.s3-website.us-east-1.amazonaws.com','https://ecomm-full-three.vercel.app','https://ecomm-full-ivans-projects-6f166288.vercel.app','https://ecomm-full-git-main-ivans-projects-6f166288.vercel.app'], // Allow requests from this origin (The client's URL) the origin is in array form if there are multiple origins.
 	credentials: true, //Allows credentials (e.g., cookies, authorization headers)
+	methods: "GET,POST,PATCH,DELETE,PUT",
 	optionsSuccessStatus: 200
 }
 
