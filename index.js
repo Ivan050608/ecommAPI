@@ -42,15 +42,17 @@ const orderRoutes = require("./routes/order");
 // };
 
 app.use(cors({
-	origin: [
-	  'ecomm-full-three.vercel.app',
-	  'ecomm-full-p0hgmkuxp-ivans-projects-6f166288.vercel.app', 
-	  'ecomm-full-ivans-projects-6f166288.vercel.app'
-	],
-	credentials: true,
-	methods: "GET,POST,PATCH,DELETE",
-	allowedHeaders: "Content-Type,Authorization",
-  }));
+    origin: [
+        'http://localhost:3000',
+        'https://ecomm-full-three.vercel.app',
+        'https://ecomm-full-p0hgmkuxp-ivans-projects-6f166288.vercel.app',
+        'https://ecomm-full-ivans-projects-6f166288.vercel.app'
+    ],
+    credentials: true,
+    methods: "GET,POST,PATCH,DELETE",
+    allowedHeaders: "Content-Type,Authorization"
+}));
+
 
 // app.use(cors(corsOptions));
 
