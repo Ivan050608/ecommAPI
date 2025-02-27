@@ -1,8 +1,9 @@
 //Dependencies
 const jwt = require("jsonwebtoken");
+const secret = "ecommerceApi";
 
 //[SECTION] Environment Setup
-require('dotenv').config()
+// require('dotenv').config()
 
 
 //[SECTION] JSON Web Tokens

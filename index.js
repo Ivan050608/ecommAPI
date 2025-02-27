@@ -2,8 +2,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const app = express()
 // const passport = require('passport');
-const session = require('express-session');
+// const session = require('express-session');
 // require('./passport');
 //[SECTION] Routes
 const userRoutes = require("./routes/user");
@@ -12,13 +13,13 @@ const productRoutes = require("./routes/product");
 const orderRoutes = require("./routes/order");
 
 //[SECTION] Environment Setup
-require('dotenv').config()
+// require('dotenv').config()
 
 
 //[SECTION] Server Setup
-const app = express()
 
-app.use(express.json())
+
+
 
 //IMPORTANT NOTE:
 /*
@@ -29,20 +30,32 @@ app.use(express.json())
 */
 
 
-const corsOptions = {
-    origin: [
-		'ecomm-full-three.vercel.app',
-		'ecomm-full-p0hgmkuxp-ivans-projects-6f166288.vercel.app', 
-		'ecomm-full-ivans-projects-6f166288.vercel.app'
+// const corsOptions = {
+//     origin: [
+// 		'ecomm-full-three.vercel.app',
+// 		'ecomm-full-p0hgmkuxp-ivans-projects-6f166288.vercel.app', 
+// 		'ecomm-full-ivans-projects-6f166288.vercel.app'
+// 	],
+//     credentials: true,
+//     methods: "GET,POST,PATCH,DELETE",
+//     allowedHeaders: "Content-Type,Authorization"
+// };
+
+app.use(cors({
+	origin: [
+	  'ecomm-full-three.vercel.app',
+	  'ecomm-full-p0hgmkuxp-ivans-projects-6f166288.vercel.app', 
+	  'ecomm-full-ivans-projects-6f166288.vercel.app'
 	],
-    credentials: true,
-    methods: "GET,POST,PATCH,DELETE",
-    allowedHeaders: "Content-Type,Authorization"
-};
+	credentials: true,
+	methods: "GET,POST,PATCH,DELETE",
+	allowedHeaders: "Content-Type,Authorization",
+  }));
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
-
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
 // [Section] Google Login
 // Creates a session with the given data
 // resave prevents the session from overwriting the secret while the session is active
@@ -61,9 +74,12 @@ app.use(cors(corsOptions));
 
 //[SECTION] Database connection
 //We use the "process.env.<environment variable name> to call on the variables in our .env file"
-mongoose.connect(process.env.MONGODB_STRING);
+// mongoose.connect(process.env.MONGODB_STRING);
 
-mongoose.connection.once('open', () => console.log('Now connected to MongoDB Atlas.'))
+// mongoose.connection.once('open', () => console.log('Now connected to MongoDB Atlas.'))
+mongoose.connect("mongodb+srv://ivanacuna055:admin123@cluster0.bcl9r.mongodb.net/ECommerceAPI?retryWrites=true&w=majority&appName=Cluster0");
+
+mongoose.connection.once("open", () => console.log("Now connected to MongoDB Atlas."));
 
 //[SECTION] Backend Routes 
 app.use("/b4/users", userRoutes);
@@ -73,8 +89,8 @@ app.use("/b4/orders", orderRoutes);
 
 //[SECTION] Server Gateway Response
 if(require.main === module){
-	app.listen(process.env.PORT || 3000, ()=> {
-		console.log(`API is now online on port ${process.env.PORT || 3000}`)
+	app.listen(process.env.PORT || 4000, ()=> {
+		console.log(`API is now online on port ${process.env.PORT || 4000}`)
 	})
 }
 
