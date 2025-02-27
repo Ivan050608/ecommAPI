@@ -27,20 +27,21 @@ app.use(express.json())
 
 
 */
+
+
 const corsOptions = {
-	origin: [
-		'http://localhost:3000',
-		'https://ecomm-full-three.vercel.app',
-		'https://ecomm-full-ivans-projects-6f166288.vercel.app',
-		'https://ecomm-full-git-main-ivans-projects-6f166288.vercel.app'
-	], // Allow requests from this origin (The client's URL) the origin is in array form if there are multiple origins.
-	credentials: true, //Allows credentials (e.g., cookies, authorization headers)
-	methods: "GET,POST,PATCH,DELETE,PUT",
-	allowedHeaders: "Content-Type,Authorization",
-	optionsSuccessStatus: 200
-}
+    origin: [
+		'ecomm-full-three.vercel.app',
+		'ecomm-full-p0hgmkuxp-ivans-projects-6f166288.vercel.app', 
+		'ecomm-full-ivans-projects-6f166288.vercel.app'
+	],
+    credentials: true,
+    methods: "GET,POST,PATCH,DELETE",
+    allowedHeaders: "Content-Type,Authorization"
+};
 
 app.use(cors(corsOptions));
+
 
 // [Section] Google Login
 // Creates a session with the given data
