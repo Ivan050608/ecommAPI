@@ -44,9 +44,9 @@ const orderRoutes = require("./routes/order");
 app.use(cors({
     origin: [
         'http://localhost:3000',
+        'https://ecomm-full-five.vercel.app',
         'https://ecomm-full-ivans-projects-6f166288.vercel.app',
-        'https://ecomm-full-git-main-ivans-projects-6f166288.vercel.app',
-        'https://ecomm-full-five.vercel.app'
+        'https://ecomm-full-i2imagmfa-ivans-projects-6f166288.vercel.app'
     ],
     credentials: true,
     methods: "GET,POST,PATCH,DELETE",
