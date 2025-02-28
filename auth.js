@@ -34,9 +34,9 @@ module.exports.createAccessToken = (user) => {
 	//Generates the token using the form data/postman data provided by the user in login request, and the secret code with no addition options provided
 	//SECRET_KEY, is a user defined string data that will be used to create our JSON Web tokens
 	//Since this is a critical data, we will use the .env to secure the secrey ket. "Keeping your secrets secret"
-	return jwt.sign(data, process.env.JWT_SECRET_KEY, {})
+	return jwt.sign(data, secret, {});
 
-}
+};
 
 //[SECTION] Token Verification
 /*
@@ -67,26 +67,23 @@ module.exports.verify = (req, res, next) => {
 				- JWT_SECRET_KEY - the secret word from earlier which validates our token
 				- function(err,decodedToken) - err contains the error in verification, decodedToken contains the decoded data within the token after the verification
 		*/
-		jwt.verify(token, process.env.JWT_SECRET_KEY, function(err, decodedToken){
+		token = token.slice(7, token.length);
+		jwt.verify(token, secret, function(err, decodedToken){
 
-			if (err) {
-				return res.status(403).send({
+			if(err){
+				return res.send({
 					auth: "Failed",
-					message: "Action Forbidden"
-				})
+					message: err.message
+				});
+
 			} else {
-				console.log("result from verify method:")
-				console.log(decodedToken)
-				// Elsem if our token is verified to be correct, then we will update the request and add the user's decoded details
-				req.user = decodedToken;	
 
-
-				
-				next()
+				req.user = decodedToken;
+				next();
 			}
 		})
 	}
-}
+};
 
 
 module.exports.verifyAdmin = (req, res, next) =>{

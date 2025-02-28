@@ -84,10 +84,10 @@ mongoose.connect("mongodb+srv://ivanacuna055:admin123@cluster0.bcl9r.mongodb.net
 mongoose.connection.once("open", () => console.log("Now connected to MongoDB Atlas."));
 
 //[SECTION] Backend Routes 
-app.use("/b4/users", userRoutes);
-app.use("/b4/products", productRoutes);
-app.use("/b4/cart", cartRoutes);
-app.use("/b4/orders", orderRoutes);
+app.use("/users", userRoutes);
+app.use("/products", productRoutes);
+app.use("/cart", cartRoutes);
+app.use("/orders", orderRoutes);
 
 //[SECTION] Server Gateway Response
 if(require.main === module){
