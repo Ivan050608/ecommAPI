@@ -44,9 +44,9 @@ const orderRoutes = require("./routes/order");
 app.use(cors({
     origin: [
         'http://localhost:3000',
-        'https://ecomm-full-three.vercel.app',
-        'https://ecomm-full-p0hgmkuxp-ivans-projects-6f166288.vercel.app',
-        'https://ecomm-full-ivans-projects-6f166288.vercel.app'
+        'https://ecomm-full-ivans-projects-6f166288.vercel.app',
+        'https://ecomm-full-git-main-ivans-projects-6f166288.vercel.app',
+        'https://ecomm-full-five.vercel.app'
     ],
     credentials: true,
     methods: "GET,POST,PATCH,DELETE",
@@ -79,7 +79,7 @@ app.use(express.urlencoded({ extended: true }));
 // mongoose.connect(process.env.MONGODB_STRING);
 
 // mongoose.connection.once('open', () => console.log('Now connected to MongoDB Atlas.'))
-mongoose.connect("mongodb+srv://ivanacuna055:admin123@cluster0.bcl9r.mongodb.net/ECommerceAPI?retryWrites=true&w=majority&appName=Cluster0");
+mongoose.connect("mongodb+srv://ivanacuna055:admin123@cluster0.bcl9r.mongodb.net/E-commerce-API?retryWrites=true&w=majority&appName=Cluster0");
 
 mongoose.connection.once("open", () => console.log("Now connected to MongoDB Atlas."));
 
